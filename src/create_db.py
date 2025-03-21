@@ -1,12 +1,12 @@
 import mysql.connector
 
-# Connect to MySQL
+# Connect to MySQL server
 cnx = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="New123",
-    port=3300
+    user='root',
+    password='New123',
+    host='127.0.0.1'
 )
+
 cursor = cnx.cursor()
 
 # Create database
@@ -50,9 +50,10 @@ CREATE TABLE IF NOT EXISTS flights (
 """
 cursor.execute(query)
 
-print("✅ Database and tables created successfully!")
-
 # Close connection
 cnx.commit()
 cursor.close()
 cnx.close()
+
+print("✅ Database and tables created successfully!")
+
