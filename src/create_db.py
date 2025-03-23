@@ -12,13 +12,16 @@ cursor = cnx.cursor()
 cursor.execute("CREATE DATABASE IF NOT EXISTS flight_reservation")
 cursor.execute("USE flight_reservation")
 
-# Create Flights Table with Updated Attributes
+# Create Flights Table with all required fields
 query = """
 CREATE TABLE IF NOT EXISTS flights (
     Flight_ID INT PRIMARY KEY AUTO_INCREMENT,
     Airline VARCHAR(50),
+    Flight_Number VARCHAR(20),
     Departure_City VARCHAR(50),
     Arrival_City VARCHAR(50),
+    Departure_Date DATE,
+    Arrival_Date DATE,
     Departure_Time DATETIME,
     Arrival_Time DATETIME,
     Price DECIMAL(10,2),
@@ -39,9 +42,10 @@ CREATE TABLE IF NOT EXISTS flights (
 """
 cursor.execute(query)
 
-print("✅ Database and tables created successfully!")
+print("✅ Database and table created successfully!")
 
 # Close connection
 cnx.commit()
 cursor.close()
 cnx.close()
+
